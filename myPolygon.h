@@ -13,3 +13,4 @@ public:
     double side_length() const;
     std ::vector<Point> getCoordinates() override;
 };
+
