@@ -5,6 +5,8 @@
 #include "myline.h"
 #include "mytriangle.h"
 #include "myrectangle.h"
+#include "myCircle.h"
+#include "myPolygon.h"
 #include <string>
 #include "fileWriter.h"
 #include "geomEngine.h"
@@ -59,29 +61,48 @@ void geomEngine::createCircle(Point center, int no_points, double radius)
     std::cout << "Radius of the circle: " << radius << std::endl;
 }
 
+void geomEngine::createPolygon(Point center, int no_Of_sides, double radius)
+{
+    Circle circle(center, no_Of_sides, radius);
+    std::vector<Point> coords = circle.getCoordinates();
+    fileWriter fpolygon;
+    fpolygon.write(coords);
+
+    std::cout << "Radius of the circle: " << radius << std::endl;
+}
+
 void geomEngine::getShape()
 {
     std::cout << "Welcome to the Geometry Engine!" << std::endl;
 
     char shapeType;
-    std::cout << "Enter shape type only intial (Line(L), Triangle(T), Rectangle(R), Circle(C)): ";
+    std::cout << "Enter shape type only intial (Line(L), Triangle(T), Rectangle(R), Circle(C), Polygon(P)): ";
     std::cin >> shapeType;
-
-    double p1x, p1y, p2x, p2y;
-    std::cout << "Enter coordinates for Point 1 (x y): ";
-    std::cin >> p1x >> p1y;
-    std::cout << "Enter coordinates for Point 2 (x y): ";
-    std::cin >> p2x >> p2y;
-
-    Point p1(p1x, p1y);
-    Point p2(p2x, p2y);
 
     if (shapeType == 'L')
     {
+        double p1x, p1y, p2x, p2y;
+        std::cout << "Enter coordinates for Point 1 (x y): ";
+        std::cin >> p1x >> p1y;
+        std::cout << "Enter coordinates for Point 2 (x y): ";
+        std::cin >> p2x >> p2y;
+
+        Point p1(p1x, p1y);
+        Point p2(p2x, p2y);
+
         createLine(p1, p2);
     }
     else if (shapeType == 'T')
     {
+        double p1x, p1y, p2x, p2y;
+        std::cout << "Enter coordinates for Point 1 (x y): ";
+        std::cin >> p1x >> p1y;
+        std::cout << "Enter coordinates for Point 2 (x y): ";
+        std::cin >> p2x >> p2y;
+
+        Point p1(p1x, p1y);
+        Point p2(p2x, p2y);
+
         double p3x, p3y;
         std::cout << "Enter coordinates for Point 3 (x y): ";
         std::cin >> p3x >> p3y;
@@ -91,6 +112,15 @@ void geomEngine::getShape()
     }
     else if (shapeType == 'R')
     {
+        double p1x, p1y, p2x, p2y;
+        std::cout << "Enter coordinates for Point 1 (x y): ";
+        std::cin >> p1x >> p1y;
+        std::cout << "Enter coordinates for Point 2 (x y): ";
+        std::cin >> p2x >> p2y;
+
+        Point p1(p1x, p1y);
+        Point p2(p2x, p2y);
+
         double p3x, p3y;
         std::cout << "Enter coordinates for Point 3 (x y): ";
         std::cin >> p3x >> p3y;
@@ -104,6 +134,12 @@ void geomEngine::getShape()
     }
     else if (shapeType == 'C')
     {
+        double p1x, p1y;
+        std::cout << "Enter coordinates for Center Point  (x y): ";
+        std::cin >> p1x >> p1y;
+
+        Point p1(p1x, p1y);
+
         int no_points;
         double radius;
         std::cout << "Enter number of points to approximate the circle: ";
@@ -112,6 +148,23 @@ void geomEngine::getShape()
         std::cin >> radius;
 
         createCircle(p1, no_points, radius);
+    }
+    else if (shapeType == 'P')
+    {
+        double p1x, p1y;
+        std::cout << "Enter coordinates for Center Point  (x y): ";
+        std::cin >> p1x >> p1y;
+
+        Point p1(p1x, p1y);
+
+        int no_of_sides;
+        double radius;
+        std::cout << "Enter number of sides of the polygon: ";
+        std::cin >> no_of_sides;
+        std::cout << "Enter radius of the polygon: ";
+        std::cin >> radius;
+
+        createPolygon(p1, no_of_sides, radius);
     }
 
     else

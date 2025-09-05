@@ -1,4 +1,4 @@
-plot 'line.dat' with lines
+plot 'lat.dat' with lines
 set xrange [0:10] 
 set yrange [0:10]
 

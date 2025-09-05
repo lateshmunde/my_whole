@@ -5,6 +5,8 @@
 #include "myline.h"
 #include "mytriangle.h"
 #include "myrectangle.h"
+#include "myCircle.h"
+#include "myPolygon.h"
 #include "fileWriter.h"
 #include <string>
 
@@ -19,4 +21,5 @@ public:
     void createTriangle(Point a, Point b, Point c);
     void createRectangle(Point a, Point b, Point c, Point d);
     void createCircle(Point center, int no_points, double radius);
+    void createPolygon(Point center, int no_of_sides, double radius);
 };

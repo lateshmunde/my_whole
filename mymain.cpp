@@ -5,6 +5,8 @@
 #include "myline.h"
 #include "mytriangle.h"
 #include "myrectangle.h"
+#include "myCircle.h"
+#include "myPolygon.h"
 #include <string>
 #include "geomEngine.h"
 #include "fileWriter.h"
